@@ -258,7 +258,9 @@ namespace Microsoft.IdentityModel.Clients.ActiveDirectory
             var requestParameters = new DictionaryRequestParameters(this.Resource, this.ClientKey);
             requestParameters[OAuthParameter.GrantType] = OAuthGrantType.RefreshToken;
             requestParameters[OAuthParameter.RefreshToken] = refreshToken;
-            requestParameters[OAuthParameter.Scope] = OAuthValue.ScopeOpenId;
+
+            // Commented due to a problem with AD not allowing scopes. Please, see http://stackoverflow.com/questions/42208919/refresh-tokens-with-adfs-3-0-adal-web-api-and-xamarin
+            //requestParameters[OAuthParameter.Scope] = OAuthValue.ScopeOpenId;
 
             AuthenticationResultEx result = await this.SendHttpMessageAsync(requestParameters).ConfigureAwait(false);
 
