@@ -355,7 +355,7 @@ namespace Microsoft.IdentityModel.Clients.ActiveDirectory
                         "=== Token Acquisition finished successfully. An access token was retuned:\n\tAccess Token Hash: {0}\n\tExpiration Time: {1}\n\tUser Hash: {2}\n\t",
                         accessTokenHash,
                         result.ExpiresOn,
-                        result.UserInfo != null
+                        result.UserInfo?.UniqueId != null
                             ? PlatformPlugin.CryptographyHelper.CreateSha256Hash(result.UserInfo.UniqueId)
                             : "null"));
             }
